@@ -1,3 +1,14 @@
-﻿namespace ConsolePlot.Plotting;
+﻿namespace ConsolePlot.Plotting
+{
+    internal struct Point
+    {
+        public double X { get; }
+        public double Y { get; }
 
-internal record struct Point(double X, double Y);
+        public Point(double x, double y)
+        {
+            X = x;
+            Y = y;
+        }
+    }
+}

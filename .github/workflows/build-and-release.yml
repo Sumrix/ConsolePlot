@@ -1,0 +1,57 @@
+name: Build and Upload Release
+
+on:
+  push:
+    tags:
+      - "v[0-9]+.[0-9]+.[0-9]+"
+      - "v[0-9]+.[0-9]+.[0-9]+-*"
+
+jobs:
+  build_and_release:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+      with:
+        fetch-depth: 0
+    
+    - name: Setup .NET
+      uses: actions/setup-dotnet@v4
+      with:
+        dotnet-version: '8.0.x'
+
+    - name: Get version from tag
+      id: get_version
+      run: echo "VERSION=${GITHUB_REF#refs/tags/v}" >> $GITHUB_OUTPUT
+
+    - name: Get numeric version
+      id: get_numeric_version
+      run: echo "NUMERIC_VERSION=$(echo ${{ steps.get_version.outputs.VERSION }} | sed 's/-.*//')" >> $GITHUB_OUTPUT
+    
+    - name: Generate changelog link
+      id: generate_changelog_link
+      run: echo "CHANGELOG_URL=https://github.com/${{ github.repository }}/releases/tag/v${{ steps.get_version.outputs.VERSION }}" >> $GITHUB_OUTPUT
+
+    - name: Build and Create NuGet Package
+      run: >
+        dotnet pack ./src/ConsolePlot/ConsolePlot.csproj 
+        -p:PackageVersion=${{ steps.get_version.outputs.VERSION }}
+        -p:AssemblyVersion=${{ steps.get_numeric_version.outputs.NUMERIC_VERSION }}
+        -p:FileVersion=${{ steps.get_numeric_version.outputs.NUMERIC_VERSION }}
+        -p:PackageReleaseNotes="${{ steps.generate_changelog_link.outputs.CHANGELOG_URL }}"
+        -p:IncludeSymbols=true 
+        -p:SymbolPackageFormat=snupkg 
+        --configuration Release 
+        --output .
+
+    - name: Push to NuGet
+      run: dotnet nuget push *.nupkg --source https://api.nuget.org/v3/index.json --api-key ${{secrets.NUGET_API_KEY}} --skip-duplicate
+
+    - name: Create GitHub Release
+      uses: softprops/action-gh-release@v2
+      with:
+        name: ${{ steps.get_version.outputs.VERSION }}
+        draft: false
+        prerelease: ${{ contains(github.ref, '-') }}
+        generate_release_notes: true

@@ -1,9 +1,40 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>net8.0</TargetFramework>
-    <ImplicitUsings>enable</ImplicitUsings>
-    <Nullable>enable</Nullable>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <Authors>Sumrix</Authors>
+    <PackageProjectUrl>https://github.com/Sumrix/ConsolePlot</PackageProjectUrl>
+    <PackageReadmeFile>nuget_readme.md</PackageReadmeFile>
+    <RepositoryUrl>https://github.com/Sumrix/ConsolePlot.git</RepositoryUrl>
+    <PackageTags>console;terminal;plot;chart</PackageTags>
+    <Copyright>Copyright © 2024 Sumrix</Copyright>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
+    <Description>ConsolePlot creates customizable line charts.</Description>
+    <RepositoryType>git</RepositoryType>
+    <PackageIcon>icon_128x128.png</PackageIcon>
+    <PublishRepositoryUrl>true</PublishRepositoryUrl>
+    <EmbedUntrackedSources>true</EmbedUntrackedSources>
+    <GenerateDocumentationFile>True</GenerateDocumentationFile>
+    <PackageReleaseNotes>I did this and that</PackageReleaseNotes>
   </PropertyGroup>
+
+  <PropertyGroup Condition="'$(GITHUB_ACTIONS)' == 'true'">
+    <ContinuousIntegrationBuild>true</ContinuousIntegrationBuild>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.SourceLink.GitHub" Version="8.0.0" PrivateAssets="All" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="..\..\images\icon_128x128.png">
+      <Pack>True</Pack>
+      <PackagePath>\</PackagePath>
+    </None>
+    <None Include="..\..\docs\nuget_readme.md">
+      <Pack>True</Pack>
+      <PackagePath>\</PackagePath>
+    </None>
+  </ItemGroup>
 
 </Project>

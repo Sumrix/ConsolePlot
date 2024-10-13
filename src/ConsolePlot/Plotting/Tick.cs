@@ -1,3 +1,14 @@
-﻿namespace ConsolePlot.Plotting;
+﻿namespace ConsolePlot.Plotting
+{
+    internal class Tick
+    {
+        public double Value { get; }
+        public string Label { get; }
 
-internal record Tick(double Value, string Label);
+        public Tick(double value, string label)
+        {
+            Value = value;
+            Label = label;
+        }
+    }
+}
