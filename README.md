@@ -1,8 +1,18 @@
-﻿# ConsolePlot
+﻿# ![Icon](images/icon_32x32.png) ConsolePlot
 
-ConsolePlot is a lightweight .NET library for creating ASCII plots in the console. It provides a simple and flexible way to visualize data directly in your terminal.
+ConsolePlot is a .NET library for creating customizable line charts in the console.
 
-## 🚀 Quick Start
+Complete documentation is available at the [API documentation](docs/API.md).
+
+[![Latest version](https://img.shields.io/nuget/v/ConsolePlot.svg)](https://www.nuget.org/packages/ConsolePlot)
+
+## Quick Start
+
+To use ConsolePlot, first install the [NuGet Package](https://www.nuget.org/packages/ConsolePlot):
+
+```sh
+dotnet add package ConsolePlot
+```
 
 Here's a simple example to get you started:
 
@@ -24,37 +34,22 @@ This will create a simple plot in your console:
 
 <img src="images/quickstart_console.png" alt="Simple Plot" width="600">
 
-## 📦 Installation and Usage
+## Features
 
-Please note that ConsolePlot is a pet project and is not available via NuGet. To use it in your own project, follow these manual installation steps:
+- Customizable axis, grid, ticks and chart lines.
+- Support for multiple data series.
+- Adaptive scaling: automatically adjusts the plot to fit the console window, ensuring round axis labels, optimal tick placement, and alignment with console cells.
 
-1. Clone this repository:
-   ```sh
-   git clone https://github.com/sumrix/ConsolePlot.git
-   ```
-
-2. Copy the `ConsolePlot/src/ConsolePlot` directory into your project.
-3. Add a reference to the `ConsolePlot.csproj` file in your project.
-
-## 🧩 Features
-
-- Easy-to-use API for creating plots
-- Customizable axis, grid, and tick settings
-- Support for multiple data series
-- Various line and point styles
-
-## 📊 Examples
+## Examples
 
 You can find various usage examples in the [ConsolePlot.Examples](src/ConsolePlot.Examples) project.
 
-To run the examples, you have two options:
-
-### Option 1: Using Visual Studio
+### Running Examples in Visual Studio:
 1. Clone this repository by clicking "Open with Visual Studio" on the GitHub page.
 2. Open the solution and set `ConsolePlot.Examples` as the startup project.
 3. Run the project.
 
-### Option 2: Using the Command Line
+### Running Examples from the Command Line:
 ```sh
 git clone https://github.com/sumrix/ConsolePlot.git
 cd ./ConsolePlot/src
@@ -62,10 +57,6 @@ dotnet build
 dotnet run --project ConsolePlot.Examples
 ```
 
-## 📚 Documentation
+## Contributing
 
-For more detailed information on how to use ConsolePlot, please refer to the [API documentation](docs/API.md).
-
-## 📄 License
-
-This project is licensed under the MIT License - see the [LICENSE](LICENSE.txt) file for details.
+Bug reports and contributions are welcome. Please submit them via the [Issues](https://github.com/Sumrix/ConsolePlot/issues) or [Pull Requests](https://github.com/Sumrix/ConsolePlot/pulls).
