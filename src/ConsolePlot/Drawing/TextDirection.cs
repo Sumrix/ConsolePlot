@@ -1,17 +1,18 @@
-﻿namespace ConsolePlot.Drawing;
-
-/// <summary>
-/// Specifies the direction of text rendering.
-/// </summary>
-public enum TextDirection
+﻿namespace ConsolePlot.Drawing
 {
     /// <summary>
-    /// Text is rendered horizontally from left to right.
+    /// Specifies the direction of text rendering.
     /// </summary>
-    Horizontal,
+    public enum TextDirection
+    {
+        /// <summary>
+        /// Text is rendered horizontally from left to right.
+        /// </summary>
+        Horizontal,
 
-    /// <summary>
-    /// Text is rendered vertically from top to bottom.
-    /// </summary>
-    Vertical
+        /// <summary>
+        /// Text is rendered vertically from top to bottom.
+        /// </summary>
+        Vertical
+    }
 }
